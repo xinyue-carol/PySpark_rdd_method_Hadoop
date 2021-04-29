@@ -7,8 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/11ciui3im1RcKOcq5eEFfTFVUzYybGfDI
 """
 
-!gdown --id 1ZK8ql8arn0pkIJZIfknNscKXn85L9ZXX -O core_poi_ny.csv
-!gdown --id 1NeXqsAeIJ8zukHt5cR2s19beDoz2Xw5d -O nyc_restaurant_pattern.csv
+
 !pip install pyspark
 
 import pyspark

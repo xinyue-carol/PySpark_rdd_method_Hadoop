@@ -60,7 +60,6 @@ if __name__=='__main__':
                     .mapValues(list)\
                     .map(lambda x: (x[0][:4],datetime.datetime.strptime(x[0],"%Y-%m-%d") ,int((median(x[1])+std(x[1]))), int((median(x[1])-std(x[1]))), int(median(x[1]))))\
                     .map(lambda x: x if x[3]>=0 else (x[0],x[1], x[2], 0, x[4]))\
-                    .map(lambda x:  x if x[0]=='2020' else (x[0], x[1].replace(year='2020'), x[2],x[3],x[4]))\
                    .cache()
 
     #sort and covert rdd to df with right column names

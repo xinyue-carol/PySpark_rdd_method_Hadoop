@@ -3,8 +3,8 @@
 """
 
 from pyspark import SparkContext
-from pyspark.sql.session import SparkSession
 sc = SparkContext()
+from pyspark.sql.session import SparkSession
 spark = SparkSession(sc)
 from numpy import std
 from numpy import median
@@ -12,10 +12,9 @@ import datetime
 import json
 import csv
 
-core = 'hdfs:///data/share/bdm/core-places-nyc.csv'
-nyc_rest = 'hdfs:///data/share/bdm/weekly-patterns-nyc-2019-2020/*'
-
 if __name__=='__main__':
+    core = 'hdfs:///data/share/bdm/core-places-nyc.csv'
+    nyc_rest = 'hdfs:///data/share/bdm/weekly-patterns-nyc-2019-2020/*'
 
     #def funtions:
     def geteveryday(x):
@@ -171,7 +170,7 @@ if __name__=='__main__':
     superm_data_sort=superm_data.sortBy(lambda x:x[1]).sortBy(lambda x:x[0])
     df_superm = spark.createDataFrame(superm_data_sort, ['year', 'date','high','low','median'])
 
-    df_rest.write.option("header", "true").csv('full_service_restaurants.csv')
+    df_rest.write.option("header", "true").csv('full_service_restaurants_offcial.csv')
     df_bigbox.write.option("header", "true").csv('big_box_grocers.csv')
     df_cstore.write.option("header", "true").csv('convenience_stores.csv')
     df_drink.write.option("header", "true").csv('drinking_places.csv')

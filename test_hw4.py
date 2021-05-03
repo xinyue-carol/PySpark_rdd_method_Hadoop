@@ -67,4 +67,4 @@ if __name__=='__main__':
     rest_data_sort=rest_data.sortBy(lambda x:x[1]).sortBy(lambda x:x[0])
     df_rest = spark.createDataFrame(rest_data_sort, ['year', 'date','high','low','median'])
 
-    df_rest.write.option("header", "true").csv('full_service_restaurants.csv')
+    df_rest.write.option("header", "true").csv('full_service_restaurants_test.csv')

@@ -3,8 +3,8 @@
 """
 
 from pyspark import SparkContext
-sc = SparkContext()
 from pyspark.sql.session import SparkSession
+sc = SparkContext()
 spark = SparkSession(sc)
 from numpy import std
 from numpy import median

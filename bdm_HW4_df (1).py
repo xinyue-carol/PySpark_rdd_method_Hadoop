@@ -21,8 +21,8 @@ import itertools
  
 def main(sc, spark):
 
-    dfPlaces = spark.read.csv('core-places-nyc.csv', header=True, escape='"')
-    dfPattern = spark.read.csv('weekly-patterns-nyc-2019-2020-sample.csv', header=True, escape='"')
+    dfPlaces = spark.read.csv('/data/share/bdm/core-places-nyc.csv', header=True, escape='"')
+    dfPattern = spark.read.csv('/data/share/bdm/weekly-patterns-nyc-2019-2020/*', header=True, escape='"')
     
     #step C.
     CAT_CODES = {'445210', '722515', '445299', '445120', '452210', '311811', '722410', '722511', '445220', '445292', '445110', '445291', '445230', '446191', '446110', '722513', '452311'}

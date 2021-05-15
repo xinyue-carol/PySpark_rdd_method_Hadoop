@@ -36,17 +36,16 @@ def main(sc, spark):
 
     #step h.
     def expandVisits(date_range_start, visits_by_day):
-          visitsByDay=ast.literal_eval(visits_by_day)
           begin_date = datetime.datetime.strptime(date_range_start[:10], "%Y-%m-%d")
-          my_dates=[]
+          visit_list=json.loads(visits_by_day)
+          totallist=[]
           for i in range(7):
-            my_dates.append((begin_date + datetime.timedelta(days=i)).isoformat()[:10])
-          expanded_list=[]
-          for idx, value in enumerate(my_dates):
-            if value[:4] !="2018":
-              expanded_list.append( (int(value[:4]), value[5:], visitsByDay[idx]))
-              return expanded_list
-
+            currentdate=begin_date + datetime.timedelta(days=i)
+            mydate=str(currentdate.month) + '-' + str(currentdate.day)
+            year=int(str(currentdate.year))
+            if year !=2018:
+              totallist.append((year, mydate, visit_list[i])) 
+          return totallist
 
     visitType = T.StructType([T.StructField('year', T.IntegerType()),
                               T.StructField('date', T.StringType()),
